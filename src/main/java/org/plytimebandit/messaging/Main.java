@@ -35,13 +35,13 @@ public class Main {
 
         private List<String> payload = new ArrayList<>();
 
-        public Payload(int i) {
+        Payload(int i) {
             for (int j = 0; j < i; j++) {
                 payload.add("PAYLOAD_" + j);
             }
         }
 
-        public List<String> getPayloadData() {
+        List<String> getPayloadData() {
             return payload;
         }
     }
