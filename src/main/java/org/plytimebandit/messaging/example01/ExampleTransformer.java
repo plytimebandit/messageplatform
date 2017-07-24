@@ -1,4 +1,4 @@
-package org.plytimebandit.messaging;
+package org.plytimebandit.messaging.example01;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

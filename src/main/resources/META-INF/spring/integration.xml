@@ -9,10 +9,10 @@
 
     <int:chain input-channel="exampleChannel">
         <int:splitter method="split">
-            <bean class="org.plytimebandit.messaging.ExampleSplitter"/>
+            <bean class="org.plytimebandit.messaging.example01.ExampleSplitter"/>
         </int:splitter>
         <int:transformer method="transform">
-            <bean class="org.plytimebandit.messaging.ExampleTransformer"/>
+            <bean class="org.plytimebandit.messaging.example01.ExampleTransformer"/>
         </int:transformer>
         <int:aggregator/>
     </int:chain>
