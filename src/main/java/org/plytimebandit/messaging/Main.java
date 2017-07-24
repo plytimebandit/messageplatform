@@ -18,7 +18,7 @@ public class Main {
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(
                 "/META-INF/spring/integration.xml");
 
-        MessageChannel channel = context.getBean("exampleChannel", MessageChannel.class);
+        MessageChannel channel = context.getBean("example01Channel", MessageChannel.class);
         Message<Payload> message = MessageBuilder.withPayload(
                 new Payload(3)
         ).build();

@@ -5,9 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
 
-    <int:channel id="exampleChannel"/>
+    <int:channel id="example01Channel"/>
 
-    <int:chain input-channel="exampleChannel">
+    <int:chain input-channel="example01Channel">
         <int:splitter method="split">
             <bean class="org.plytimebandit.messaging.example01.ExampleSplitter"/>
         </int:splitter>
