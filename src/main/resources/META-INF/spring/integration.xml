@@ -5,6 +5,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
 
+    <bean class="org.plytimebandit.messaging.Main">
+        <property name="example01Channel" ref="example01Channel"/>
+    </bean>
+
     <int:channel id="example01Channel"/>
 
     <int:chain input-channel="example01Channel">
