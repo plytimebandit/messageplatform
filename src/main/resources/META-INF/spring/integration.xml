@@ -7,10 +7,10 @@
 
     <bean class="org.plytimebandit.messaging.Main">
         <property name="example01Channel" ref="example01Channel"/>
+        <property name="example02Gateway" ref="example02Gateway"/>
     </bean>
 
     <int:channel id="example01Channel"/>
-
     <int:chain input-channel="example01Channel">
         <int:splitter method="split">
             <bean class="org.plytimebandit.messaging.example01.ExampleSplitter"/>
@@ -20,5 +20,13 @@
         </int:transformer>
         <int:aggregator/>
     </int:chain>
+
+    <int:gateway id="example02Gateway"
+            service-interface="org.plytimebandit.messaging.example02.ExampleGateway"
+            default-request-channel="example01Channel"/>
+
+    <int:service-activator input-channel="example01Channel">
+        <bean class="org.plytimebandit.messaging.example02.ExampleGatewayImpl"/>
+    </int:service-activator>
 
 </beans>
