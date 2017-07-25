@@ -8,6 +8,7 @@ import org.plytimebandit.messaging.example02.ExampleGateway;
 import org.plytimebandit.messaging.util.Payload;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.core.MessagingTemplate;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
@@ -19,6 +20,7 @@ public class Main {
 
     private MessageChannel example01Channel;
     private ExampleGateway example02Gateway;
+    private DirectChannel example03Channel;
 
     public static void main(String... args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("/META-INF/spring/integration.xml");
@@ -26,7 +28,18 @@ public class Main {
         Main main = context.getBean(Main.class);
 
 //        main.runExample01();
-        main.runExample02();
+//        main.runExample02();
+        main.runExample03();
+    }
+
+    private void runExample03() {
+        LOG.info("Running example 03");
+
+        Message<Payload> message = MessageBuilder.withPayload(new Payload(3)).build();
+        MessagingTemplate messagingTemplate = new MessagingTemplate();
+        Message<?> result = messagingTemplate.sendAndReceive(example03Channel, message);
+
+        LOG.info("Return message: " + result.getPayload());
     }
 
     private void runExample02() {
@@ -53,5 +66,9 @@ public class Main {
 
     public void setExample02Gateway(ExampleGateway example02Gateway) {
         this.example02Gateway = example02Gateway;
+    }
+
+    public void setExample03Channel(org.springframework.integration.channel.DirectChannel example03Channel) {
+        this.example03Channel = example03Channel;
     }
 }
