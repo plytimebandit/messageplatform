@@ -10,7 +10,7 @@
     <bean class="org.plytimebandit.messaging.Main">
         <property name="example01Channel" ref="example01Channel"/>
         <property name="example02Gateway" ref="example02Gateway"/>
-        <property name="example03Channel" ref="example03Channel"/>
+        <property name="example03Gateway" ref="example03Gateway"/>
     </bean>
 
     <!-- Example 01. Channel with chain. -->
@@ -31,11 +31,12 @@
     <int:gateway id="example02Gateway"
             service-interface="org.plytimebandit.messaging.example02.ExampleGateway"
             default-request-channel="example01Channel"/>
-    <int:service-activator input-channel="example01Channel">
-        <bean class="org.plytimebandit.messaging.example02.ExampleGatewayImpl"/>
-    </int:service-activator>
 
     <!-- Example 03. Routing messages. -->
+
+    <int:gateway id="example03Gateway"
+                 service-interface="org.plytimebandit.messaging.example02.ExampleGateway"
+                 default-request-channel="example03Channel"/>
 
     <int:channel id="example03Channel"/>
     <int:splitter method="split"
