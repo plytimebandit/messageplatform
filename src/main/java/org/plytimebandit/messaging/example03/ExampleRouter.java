@@ -10,7 +10,7 @@ public class ExampleRouter {
     public String route(String payload) {
         LOG.info("Starting ExampleRouter with payload: " + payload);
         char lastChar = payload.charAt(payload.length() - 1);
-        int number = (int) lastChar;
+        int number = Integer.valueOf(lastChar+"");
         return number % 2 == 0 ? "leftChannel" : "rightChannel";
     }
 

@@ -20,6 +20,7 @@ public class Main {
     private MessageChannel example01Channel;
     private ExampleGateway example02Gateway;
     private ExampleGateway example03Gateway;
+    private ExampleGateway example04Gateway;
 
     public static void main(String... args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("/META-INF/spring/integration.xml");
@@ -28,7 +29,15 @@ public class Main {
 
 //        main.runExample01();
 //        main.runExample02();
-        main.runExample03();
+//        main.runExample03();
+        main.runExample04();
+    }
+
+    private void runExample04() {
+        LOG.info("Running example 04");
+        Collection<?> result = example04Gateway.sendAndReceive(new Payload(5));
+        LOG.info("Return message: " + result);
+
     }
 
     private void runExample03() {
@@ -63,5 +72,9 @@ public class Main {
 
     public void setExample03Gateway(ExampleGateway example03Gateway) {
         this.example03Gateway = example03Gateway;
+    }
+
+    public void setExample04Gateway(ExampleGateway example04Gateway) {
+        this.example04Gateway = example04Gateway;
     }
 }
