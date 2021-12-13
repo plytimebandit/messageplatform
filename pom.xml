@@ -14,7 +14,7 @@
         <targetJDK>1.8</targetJDK>
         <encoding>UTF-8</encoding>
 
-        <spring-integration.version>4.3.21.RELEASE</spring-integration.version>
+        <spring-integration.version>4.3.24.RELEASE</spring-integration.version>
         <log4j.version>2.8.2</log4j.version>
     </properties>
 
